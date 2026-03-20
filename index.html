@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aneika Blake-Laing | Cybersecurity Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a30;
+      --panel-2: #18223f;
+      --text: #e9eefc;
+      --muted: #b7c2e3;
+      --accent: #68a0ff;
+      --accent-2: #8ef0d0;
+      --border: #243154;
+      --shadow: 0 12px 32px rgba(0,0,0,0.25);
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #09101d 0%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(11, 16, 32, 0.82);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 78px 0 42px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      margin: 10px 0 14px;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    p { color: var(--muted); }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #15203b;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #7f8cff);
+      color: white;
+      border: none;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+      color: white;
+    }
+
+    section {
+      padding: 26px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .project-grid, .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      background: rgba(104,160,255,0.12);
+      border: 1px solid rgba(104,160,255,0.28);
+      color: #dce8ff;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .skills-grid .card {
+      min-height: 100%;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    footer {
+      padding: 36px 0 48px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .small {
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .project-grid,
+      .skills-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Aneika Blake-Laing | Cybersecurity Portfolio</div>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="card">
+          <div class="eyebrow">Cybersecurity Analyst Portfolio</div>
+          <h1>Cybersecurity Portfolio - Security Analysis, Incident Response, and Risk Management</h1>
+          <p>
+            Security analyst building further expertise in cybersecurity, with a focus on incident response, threat detection, and security investigations. This portfolio presents hands-on work from case-based labs and projects, including phishing attacks, malware analysis, DDoS incidents, and access control failures. It highlights practical use of security tools, log analysis, and frameworks to analyze incidents and improve security posture.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">View Featured Projects</a>
+            <a class="btn" href="#resume">Resume</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Focus Areas</h2>
+          <div class="pill-row">
+            <span class="pill">Incident Response</span>
+            <span class="pill">Threat Detection</span>
+            <span class="pill">Malware Analysis</span>
+            <span class="pill">Access Control</span>
+            <span class="pill">Risk Assessment</span>
+            <span class="pill">Linux Security</span>
+            <span class="pill">SQL Analysis</span>
+            <span class="pill">NIST Frameworks</span>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>5</strong>
+              Featured projects
+            </div>
+            <div class="stat">
+              <strong>8+</strong>
+              Total portfolio projects
+            </div>
+            <div class="stat">
+              <strong>IR</strong>
+              Core emphasis area
+            </div>
+            <div class="stat">
+              <strong>Tools</strong>
+              SQL, Linux, VirusTotal, tcpdump
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Featured Work</div>
+            <h2>Featured Projects</h2>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <article class="card">
+            <h3>Phishing Attack Leading to Malware Execution</h3>
+            <div class="pill-row">
+              <span class="pill">VirusTotal</span>
+              <span class="pill">Email Analysis</span>
+              <span class="pill">Incident Escalation</span>
+            </div>
+            <p>Investigated a phishing email that delivered a malicious attachment disguised as a job application. Confirmed the file hash as malicious and documented escalation steps aligned to incident response procedures.</p>
+            <ul>
+              <li>Validated malware with VirusTotal detections</li>
+              <li>Identified social engineering indicators</li>
+              <li>Recommended containment and user awareness improvements</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Detecting Suspicious Login Activity Using SQL</h3>
+            <div class="pill-row">
+              <span class="pill">SQL</span>
+              <span class="pill">Log Analysis</span>
+              <span class="pill">Threat Detection</span>
+            </div>
+            <p>Analyzed authentication records to identify failed login attempts after hours, suspicious dates, and logins originating outside expected regions.</p>
+            <ul>
+              <li>Built filtered SQL queries for investigation</li>
+              <li>Identified anomalous login patterns</li>
+              <li>Supported further review of access control issues</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Malware Distribution via Compromised Website</h3>
+            <div class="pill-row">
+              <span class="pill">tcpdump</span>
+              <span class="pill">DNS/HTTP Analysis</span>
+              <span class="pill">Web Security</span>
+            </div>
+            <p>Investigated a compromised website that tricked visitors into downloading malware and redirected them to a malicious domain.</p>
+            <ul>
+              <li>Observed DNS and HTTP activity in a sandboxed workflow</li>
+              <li>Connected site compromise to weak/default credentials</li>
+              <li>Recommended MFA and stronger password controls</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Database Server Vulnerability Assessment</h3>
+            <div class="pill-row">
+              <span class="pill">NIST SP 800-30</span>
+              <span class="pill">Risk Analysis</span>
+              <span class="pill">Access Control</span>
+            </div>
+            <p>Performed a vulnerability and risk assessment for a database server exposed to unauthorized access and data manipulation risks.</p>
+            <ul>
+              <li>Evaluated threat actors and impact levels</li>
+              <li>Recommended RBAC, MFA, TLS, and IP allow-listing</li>
+              <li>Focused on reducing exposure to business-critical systems</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Unauthorized Access Due to Improper Deprovisioning</h3>
+            <div class="pill-row">
+              <span class="pill">IAM</span>
+              <span class="pill">Least Privilege</span>
+              <span class="pill">Access Review</span>
+            </div>
+            <p>Investigated an account that remained active after employee separation and retained administrator-level access far beyond business need.</p>
+            <ul>
+              <li>Identified offboarding and privilege management failures</li>
+              <li>Highlighted risk of excessive permissions</li>
+              <li>Recommended automated deprovisioning and audit reviews</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Capabilities</div>
+            <h2>Skills & Tools</h2>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="card">
+            <h3>Incident Response</h3>
+            <p>Incident triage, 5 W's analysis, escalation decisions, phishing response, malware investigation, documentation, lessons learned.</p>
+          </div>
+          <div class="card">
+            <h3>Security Tools</h3>
+            <p>VirusTotal, tcpdump, Linux command line, chmod, SQL queries, log filtering, packet and protocol review.</p>
+          </div>
+          <div class="card">
+            <h3>Security Domains</h3>
+            <p>Access control, least privilege, risk assessment, compliance review, vulnerability analysis, social engineering awareness.</p>
+          </div>
+          <div class="card">
+            <h3>Frameworks & Concepts</h3>
+            <p>NIST SP 800-30, NIST SP 800-53 AC-6, NIST CSF, PASTA threat modeling, password policy, MFA, RBAC.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="card">
+          <div class="eyebrow">About Me</div>
+          <h2>Building practical cybersecurity experience</h2>
+          <p>
+            Cybersecurity analyst with hands-on experience in incident response, threat detection, and security analysis. Focused on investigating security events, identifying root causes, and recommending practical controls to reduce risk.
+          </p>
+          
+        </div>
+
+        <div class="card" id="resume">
+          <div class="eyebrow">Resume</div>
+          <h2>Resume & Links</h2>
+          
+          <ul>
+            <li><a href="#">Resume PDF</a></li>
+            <li><a href="https://github.com/aneilaing">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/aneikalaing">LinkedIn</a></li>
+            <li><a href="mailto:aneika.laing@gmail.com">aneika.laing@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Aneika Blake-Laing | Cybersecurity Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
